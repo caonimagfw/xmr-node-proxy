@@ -10,9 +10,8 @@ RUN apt-get update \
     && cd /xmr-node-proxy \
     && npm install \
     && cp -n config_example.json config.json \
-    && openssl req -subj "/C=IT/ST=Pool/L=Daemon/O=Mining Pool/CN=mining.proxy" -newkey rsa:2048 -nodes -keyout cert.key -x509 -out cert.pem -days 36500
-    && cd / \
-    && rm -rf /xmr-node-proxy 
+    && openssl req -subj "/C=IT/ST=Pool/L=Daemon/O=Mining Pool/CN=mining.proxy" -newkey rsa:2048 -nodes -keyout cert.key -x509 -out cert.pem -days 36500 \
+    && cd / && rm -rf /xmr-node-proxy 
 
 EXPOSE 8080 8443 3333
 
