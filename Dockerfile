@@ -3,7 +3,7 @@ ENV ALPINE_MIRROR "http://dl-cdn.alpinelinux.org/alpine"
 RUN echo "${ALPINE_MIRROR}/edge/main" >> /etc/apk/repositories
 RUN apk add --no-cache nodejs-current  --repository="http://dl-cdn.alpinelinux.org/alpine/edge/community"
 RUN apk add --no-cache git make cmake libstdc++ gcc g++ automake libtool autoconf linux-headers bash openssl-dev
-RUN apk add --no-cache boost boost-dev boost-system-dev boost-date-time-dev sodium-dev
+RUN apk add --no-cache boost boost-dev boost-system-dev boost-date_time libsodium
 RUN git clone https://github.com/MoneroOcean/xmr-node-proxy /xmr-node-proxy \
     && cd /xmr-node-proxy \
     && npm install \
