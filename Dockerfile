@@ -2,7 +2,8 @@ FROM centos:7
 
 RUN yum -y update \
     && yum install -y curl gnupg \
-    && curl -fsSL https://deb.nodesource.com/setup_14.x -o /tmp/node_setup.sh \
+    && wget -O - https://rpm.nodesource.com/setup_14.x | bash \
+    && yum -y install nodejs \
     && bash /tmp/node_setup.sh \
     && rm /tmp/node_setup.sh \
     && yum install -y git make g++ libboost-dev libboost-system-dev libboost-date-time-dev libsodium-dev \
