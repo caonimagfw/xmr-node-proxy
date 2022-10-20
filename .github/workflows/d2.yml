@@ -1,0 +1,29 @@
+name: Build xmr-node-proxy22
+
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+      tags:
+        description: 'Buid Actions Tag'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository master branch
+        uses: actions/checkout@v2
+        with:
+          repository: caonimagfw/xmr-node-proxy
+      
+      - name: Build image
+        run: |
+          docker build . -t xmr-node-proxy
+
+      - name: Upload image
+        uses: ishworkh/docker-image-artifact-upload@v1
+        with:
+          image: "xmr-node-proxy"
