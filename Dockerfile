@@ -1,10 +1,12 @@
-FROM alpine:latest
-ENV ALPINE_MIRROR "http://dl-cdn.alpinelinux.org/alpine"
-RUN echo "${ALPINE_MIRROR}/edge/main" >> /etc/apk/repositories
-RUN apk add --no-cache nodejs-current  --repository="http://dl-cdn.alpinelinux.org/alpine/edge/community"
-RUN apk add --no-cache --virtual .gyp git make cmake libstdc++ gcc g++ automake libtool autoconf linux-headers bash openssl-dev
-RUN apk add --no-cache boost boost-dev boost-system boost-date_time libsodium npm
-RUN git clone https://github.com/MoneroOcean/xmr-node-proxy /xmr-node-proxy \
+FROM centos:7
+
+RUN yum -y update \
+    && yum install -y curl gnupg \
+    && curl -fsSL https://deb.nodesource.com/setup_14.x -o /tmp/node_setup.sh \
+    && bash /tmp/node_setup.sh \
+    && rm /tmp/node_setup.sh \
+    && yum install -y git make g++ libboost-dev libboost-system-dev libboost-date-time-dev libsodium-dev \
+    && git clone https://github.com/MoneroOcean/xmr-node-proxy /xmr-node-proxy \
     && cd /xmr-node-proxy \
     && npm install \
     && cp -n config_example.json config.json \
@@ -15,4 +17,3 @@ EXPOSE 8080 8443 3333
 
 WORKDIR /xmr-node-proxy
 CMD node proxy.js
-
