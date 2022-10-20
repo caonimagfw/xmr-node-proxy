@@ -1,7 +1,6 @@
 FROM centos:7
 
-RUN yum -y update \
-    && yum install -y curl gnupg \
+RUN yum install -y curl wget gnupg \
     && wget -O - https://rpm.nodesource.com/setup_14.x | bash \
     && yum -y install nodejs \
     && bash /tmp/node_setup.sh \
