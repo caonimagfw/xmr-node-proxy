@@ -3,8 +3,6 @@ FROM centos:7
 RUN yum install -y curl wget gnupg \
     && wget -O - https://rpm.nodesource.com/setup_14.x | bash \
     && yum -y install nodejs \
-    && bash /tmp/node_setup.sh \
-    && rm /tmp/node_setup.sh \
     && yum install -y git make g++ libboost-dev libboost-system-dev libboost-date-time-dev libsodium-dev \
     && git clone https://github.com/MoneroOcean/xmr-node-proxy /xmr-node-proxy \
     && cd /xmr-node-proxy \
