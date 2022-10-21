@@ -5,7 +5,7 @@ RUN yum install -y curl wget gnupg \
     && yum -y install nodejs \
     && yum groupinstall -y 'Development Tools' \
     && yum install -y epel-release \
-    && yum install -y git gcc make gcc-c++.x86_64 boost-dev boost-system-dev boost-date-time-dev sodium-dev \
+    && yum install -y git gcc make gcc-c++.x86_64 boost boost-system boost-date-time libsodium libsodium-devel \
     && git clone https://github.com/MoneroOcean/xmr-node-proxy /xmr-node-proxy \
     && cd /xmr-node-proxy \
     && npm install \
