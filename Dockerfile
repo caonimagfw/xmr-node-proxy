@@ -5,7 +5,7 @@ RUN yum install -y curl wget gnupg \
     && yum -y install nodejs \
     && yum groupinstall -y 'Development Tools' \
     && yum install -y epel-release \
-    && yum install -y git gcc make gcc-c++ boost boost-devel boost-system boost-date-time libsodium libsodium-devel \
+    && yum install -y git gcc make boost boost-devel boost-system boost-date-time libsodium libsodium-devel \
     && yum install -y centos-release-scl \
     && yum install -y devtoolset-8-gcc devtoolset-8-gcc-c++ \
     && scl enable devtoolset-8 -- bash \
