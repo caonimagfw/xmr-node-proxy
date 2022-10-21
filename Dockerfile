@@ -4,7 +4,8 @@ RUN yum install -y curl wget gnupg \
     && wget -O - https://rpm.nodesource.com/setup_14.x | bash \
     && yum -y install nodejs \
     && yum groupinstall -y 'Development Tools' \
-    && yum install -y git gcc make g++ libboost-dev libboost-system-dev libboost-date-time-dev libsodium-dev \
+    && yum install -y epel-release \
+    && yum install -y git gcc make gcc-c++.x86_64 boost-dev boost-system-dev boost-date-time-dev sodium-dev \
     && git clone https://github.com/MoneroOcean/xmr-node-proxy /xmr-node-proxy \
     && cd /xmr-node-proxy \
     && npm install \
